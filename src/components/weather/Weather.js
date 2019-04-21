@@ -1,13 +1,19 @@
 import React from "react";
-import styles from "./Weather.module.scss";
+import classes from "./Weather.module.scss";
 
 const Weather = ({ day, thumbnail, minTemp, maxTemp }) => {
   return (
-    <div className={styles.weather} id="weather">
-      <span className="weather-min">{minTemp}</span>
+    <div className={classes.weather} id="weather">
+      <span className={classes["weather-min"]}>
+        {minTemp}
+        <sup>o</sup>
+      </span>
       <h2 className="weather-day">{day}</h2>
       <img src={thumbnail} alt="" />
-      <span className="weather-max">{maxTemp}</span>
+      <span className={classes["weather-max"]}>
+        {maxTemp}
+        <sup>o</sup>
+      </span>
     </div>
   );
 };

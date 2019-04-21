@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import "./main.scss";
 import Weather from "./components/weather/Weather";
 
 class App extends Component {
@@ -8,13 +7,20 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <Weather
-            day="Sunday"
-            thumbnail="https://google.com"
-            minTemp="34"
-            maxTemp="43"
-          />
+          <ul className="weather-days">
+            {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((el, id) => {
+              return (
+                <li className="weather-day" key={id}>
+                  <Weather
+                    day={el}
+                    thumbnail={`https://picsum.photos/50?random=${id}`}
+                    minTemp="34"
+                    maxTemp="43"
+                  />
+                </li>
+              );
+            })}
+          </ul>
         </header>
       </div>
     );
