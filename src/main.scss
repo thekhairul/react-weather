@@ -1,11 +1,4 @@
-body {
-  background-color: #282c34;
-}
-
-.weather-days {
-  list-style: none;
-  display: flex;
-  margin: 0 auto;
-  padding: 0;
-  max-width: 80%;
-}
+@import "node_modules/normalize-scss/sass/normalize";
+@import "./styles/variables";
+@import "./styles/global";
+@import "./styles/app";

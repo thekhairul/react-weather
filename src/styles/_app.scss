@@ -1,0 +1,9 @@
+.App {
+  min-height: 100vh;
+  background: url("assets/app-bg.jpg") no-repeat;
+  background-size: cover;
+  &__header {
+    padding: 20px 0;
+    border-bottom: 1px solid $color_border;
+  }
+}
