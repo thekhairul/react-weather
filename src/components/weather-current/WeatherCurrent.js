@@ -12,27 +12,31 @@ const WeatherCurrent = props => {
           <span className="date">10th May, 2019</span>
           <span className="location">Dhaka</span>
         </div>
-        <h2 className="title">Drizzle</h2>
         <img src="" alt="" className="icon" />
-        <h3 className="temperature">
+        <h2 className="temperature">
           <span className="value">31</span>
           <span className="unit">C</span>
-        </h3>
+        </h2>
+        <h3 className="condition">Drizzle</h3>
       </div>
 
       <div className="weather-current__details">
         <ul>
           <li>
             <img src={iconWind} alt="" />
+            <span>12 km/h</span>
           </li>
           <li>
             <img src={iconHumidity} alt="" />
+            <span>24%</span>
           </li>
           <li>
             <img src={iconPressure} alt="" />
+            <span>43m</span>
           </li>
           <li>
             <img src={iconVisibility} alt="" />
+            <span>23km</span>
           </li>
         </ul>
       </div>

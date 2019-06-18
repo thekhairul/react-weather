@@ -6,13 +6,14 @@ import "./main.scss";
 class App extends Component {
   state = {
     currentWeatherAPI:
-      "https://api.weatherbit.io/v2.0/current?city=Dhaka&country=BD&key=b84510db5c6c45aa8b4323cdb984f4d7",
+      "https://api.openweathermap.org/data/2.5/weather?id=2172797&APPID=a6b32c215b9e2bed2fe00783d7057ada",
     currentWeather: null
   };
 
   componentDidMount() {
     axios.get(this.state.currentWeatherAPI).then(res => {
-      this.setState({ currentWeather: res.data.data[0] });
+      console.log(res);
+      this.setState({ currentWeather: res.data });
     });
   }
 
