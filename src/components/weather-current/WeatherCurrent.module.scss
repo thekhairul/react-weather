@@ -1,0 +1,14 @@
+.weather-current {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+
+  :global {
+    .weather-current__featured {
+      flex-basis: 50%;
+    }
+    .weather-current__details {
+      flex-basis: 50%;
+    }
+  }
+}

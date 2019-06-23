@@ -1,7 +1,10 @@
+ul {
+  li {
+    list-style: none;
+  }
+}
 .container {
   max-width: 580px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 15px;
-  padding-right: 15px;
 }

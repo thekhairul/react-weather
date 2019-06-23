@@ -10,17 +10,17 @@ class App extends Component {
     currentWeather: null
   };
 
-  // componentDidMount() {
-  //   axios.get(this.state.currentWeatherAPI).then(res => {
-  //     console.log(res);
-  //     this.setState({ currentWeather: res.data });
-  //   });
-  // }
+  componentDidMount() {
+    axios.get(this.state.currentWeatherAPI).then(res => {
+      console.log(res);
+      this.setState({ currentWeather: res.data });
+    });
+  }
 
   render() {
-    // if (this.state.currentWeather === null) {
-    //   return null;
-    // }
+    if (this.state.currentWeather === null) {
+      return null;
+    }
 
     return (
       <div className="App">
