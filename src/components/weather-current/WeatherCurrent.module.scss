@@ -5,10 +5,41 @@
 
   :global {
     .weather-current__featured {
-      flex-basis: 50%;
+      flex: 1 0 60%;
+
+      .value {
+        font-size: 20px;
+      }
+      .unit {
+        position: relative;
+        font-size: 14px;
+        &::before {
+          content: "";
+          position: absolute;
+          top: -10;
+          width: 5px;
+          height: 5px;
+          border: 1px solid black;
+          border-radius: 50%;
+        }
+      }
     }
     .weather-current__details {
-      flex-basis: 50%;
+      flex: 1 0 40%;
+
+      ul {
+        margin: 0;
+        padding: 0;
+        li {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 40px;
+            margin-right: 10px;
+          }
+        }
+      }
     }
   }
 }

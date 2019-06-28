@@ -11,7 +11,7 @@ const WeatherCurrent = props => {
       <div className="weather-current__featured">
         <div className="meta">
           <span className="location">Dhaka,</span>
-          <span className="date">12th May, 2019</span>
+          <span className="date">11th May, 2019</span>
         </div>
         <h3 className="condition">Drizzle</h3>
         <img src="" alt="" className="icon" />
@@ -25,19 +25,27 @@ const WeatherCurrent = props => {
         <ul>
           <li>
             <img src={iconWind} alt="" />
-            <span>12 km/h</span>
+            <span>
+              <b>Wind:</b> 12 km/h
+            </span>
           </li>
           <li>
             <img src={iconHumidity} alt="" />
-            <span>24%</span>
+            <span>
+              <b>Humidity:</b> 24%
+            </span>
           </li>
           <li>
             <img src={iconPressure} alt="" />
-            <span>43m</span>
+            <span>
+              <b>Pressure:</b> 43m
+            </span>
           </li>
           <li>
             <img src={iconVisibility} alt="" />
-            <span>23km</span>
+            <span>
+              <b>Visibility:</b> 23km
+            </span>
           </li>
         </ul>
       </div>
