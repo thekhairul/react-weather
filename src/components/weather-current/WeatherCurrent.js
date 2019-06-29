@@ -5,18 +5,26 @@ import iconHumidity from "../../assets/icon-humidity.svg";
 import iconPressure from "../../assets/icon-pressure.svg";
 import iconVisibility from "../../assets/icon-visibility.svg";
 
-const WeatherCurrent = props => {
+const WeatherCurrent = ({
+  location,
+  condition,
+  temp,
+  wind,
+  humidity,
+  pressure,
+  visibility
+}) => {
   return (
     <div className={styles["weather-current"]}>
       <div className="weather-current__featured">
         <div className="meta">
-          <span className="location">Dhaka,</span>
+          <span className="location">{location},</span>
           <span className="date">11th May, 2019</span>
         </div>
-        <h3 className="condition">Drizzle</h3>
+        <h3 className="condition">{condition}</h3>
         <img src="" alt="" className="icon" />
         <div className="temperature">
-          <span className="value">31</span>
+          <span className="value">{temp}</span>
           <span className="unit">C</span>
         </div>
       </div>
@@ -26,25 +34,25 @@ const WeatherCurrent = props => {
           <li>
             <img src={iconWind} alt="" />
             <span>
-              <b>Wind:</b> 12 km/h
+              <b>Wind:</b> {wind} m/s
             </span>
           </li>
           <li>
             <img src={iconHumidity} alt="" />
             <span>
-              <b>Humidity:</b> 24%
+              <b>Humidity:</b> {humidity}%
             </span>
           </li>
           <li>
             <img src={iconPressure} alt="" />
             <span>
-              <b>Pressure:</b> 43m
+              <b>Pressure:</b> {pressure} hpa
             </span>
           </li>
           <li>
             <img src={iconVisibility} alt="" />
             <span>
-              <b>Visibility:</b> 23km
+              <b>Visibility:</b> {visibility / 1000} km
             </span>
           </li>
         </ul>

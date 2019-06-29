@@ -6,7 +6,7 @@ import "./main.scss";
 class App extends Component {
   state = {
     currentWeatherAPI:
-      "https://api.openweathermap.org/data/2.5/weather?id=2172797&APPID=a6b32c215b9e2bed2fe00783d7057ada",
+      "https://api.openweathermap.org/data/2.5/weather?id=1185241&APPID=a6b32c215b9e2bed2fe00783d7057ada&units=metric",
     currentWeather: null
   };
 
@@ -22,6 +22,8 @@ class App extends Component {
       return null;
     }
 
+    const weather = this.state.currentWeather;
+
     return (
       <div className="App">
         <div className="App__header">
@@ -32,7 +34,15 @@ class App extends Component {
 
         <div className="App__main">
           <div className="App__main__container container">
-            <WeatherCurrent />
+            <WeatherCurrent
+              location={weather.name}
+              condition={weather.weather[0].main}
+              temp={weather.main.temp}
+              wind={weather.wind.speed}
+              humidity={weather.main.humidity}
+              pressure={weather.main.pressure}
+              visibility={weather.visibility}
+            />
           </div>
         </div>
       </div>
