@@ -1,4 +1,5 @@
 import React from "react";
+import Moment from "react-moment";
 import styles from "./WeatherCurrent.module.scss";
 import iconWind from "../../assets/icon-wind.svg";
 import iconHumidity from "../../assets/icon-humidity.svg";
@@ -19,7 +20,9 @@ const WeatherCurrent = ({
       <div className="weather-current__featured">
         <div className="meta">
           <span className="location">{location},</span>
-          <span className="date">11th May, 2019</span>
+          <span className="date">
+            <Moment format="Do MMM YYYY">{new Date()}</Moment>
+          </span>
         </div>
         <h3 className="condition">{condition}</h3>
         <img src="" alt="" className="icon" />

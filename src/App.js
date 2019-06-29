@@ -18,10 +18,12 @@ class App extends Component {
   }
 
   render() {
+    // render nothing before API fetch is complete
     if (this.state.currentWeather === null) {
       return null;
     }
 
+    // cache weather data once fetched
     const weather = this.state.currentWeather;
 
     return (
