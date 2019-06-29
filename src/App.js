@@ -39,6 +39,7 @@ class App extends Component {
             <WeatherCurrent
               location={weather.name}
               condition={weather.weather[0].main}
+              icon={weather.weather[0].icon}
               temp={weather.main.temp}
               wind={weather.wind.speed}
               humidity={weather.main.humidity}

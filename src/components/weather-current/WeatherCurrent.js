@@ -9,6 +9,7 @@ import iconVisibility from "../../assets/icon-visibility.svg";
 const WeatherCurrent = ({
   location,
   condition,
+  icon,
   temp,
   wind,
   humidity,
@@ -19,13 +20,17 @@ const WeatherCurrent = ({
     <div className={styles["weather-current"]}>
       <div className="weather-current__featured">
         <div className="meta">
-          <span className="location">{location},</span>
+          <span className="location">{location}, </span>
           <span className="date">
             <Moment format="Do MMM YYYY">{new Date()}</Moment>
           </span>
         </div>
         <h3 className="condition">{condition}</h3>
-        <img src="" alt="" className="icon" />
+        <img
+          src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+          alt=""
+          className="icon"
+        />
         <div className="temperature">
           <span className="value">{temp}</span>
           <span className="unit">C</span>
