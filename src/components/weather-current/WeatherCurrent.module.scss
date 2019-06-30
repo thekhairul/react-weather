@@ -1,3 +1,5 @@
+@import "node_modules/breakpoint-sass/stylesheets/breakpoint";
+
 .weather-current {
   padding: 15px;
   display: flex;
@@ -6,6 +8,22 @@
   :global {
     .weather-current__featured {
       flex: 1 0 60%;
+      @include breakpoint(max-width 480px) {
+        flex-basis: 50%;
+      }
+
+      .meta {
+        span {
+          @include breakpoint(max-width 480px) {
+            display: block;
+          }
+        }
+      }
+
+      .condition {
+        margin-top: 10px;
+        margin-bottom: 0;
+      }
 
       .value {
         font-size: 20px;
@@ -26,6 +44,9 @@
     }
     .weather-current__details {
       flex: 1 0 40%;
+      @include breakpoint(max-width 480px) {
+        flex-basis: 50%;
+      }
 
       ul {
         margin: 0;
@@ -33,6 +54,10 @@
         li {
           display: flex;
           align-items: center;
+
+          @include breakpoint(max-width 480px) {
+            font-size: 12px;
+          }
 
           img {
             width: 40px;
