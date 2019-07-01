@@ -26,18 +26,19 @@
       }
 
       .value {
-        font-size: 20px;
+        font-size: 30px;
       }
       .unit {
         position: relative;
-        font-size: 14px;
+        font-size: 16px;
+        margin-left: 5px;
         &::before {
           content: "";
           position: absolute;
-          top: -10;
+          top: -10px;
           width: 5px;
           height: 5px;
-          border: 1px solid black;
+          border: 2px solid black;
           border-radius: 50%;
         }
       }
