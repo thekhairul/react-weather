@@ -8,7 +8,7 @@ class App extends Component {
     currentWeatherAPI:
       "https://api.openweathermap.org/data/2.5/weather?id=1185241&APPID=a6b32c215b9e2bed2fe00783d7057ada&units=metric",
     weatherForecastAPI:
-      "https://api.openweathermap.org/data/2.5/forecast?id=1185241&APPID=a6b32c215b9e2bed2fe00783d7057ada",
+      "https://api.openweathermap.org/data/2.5/forecast?id=1185241&APPID=a6b32c215b9e2bed2fe00783d7057ada&units=metric",
     currentWeather: null,
     weatherForecast: null
   };
