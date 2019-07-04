@@ -18,6 +18,11 @@ class App extends Component {
       console.log(res);
       this.setState({ currentWeather: res.data });
     });
+
+    axios.get(this.state.weatherForecastAPI).then(res => {
+      console.log(res);
+      this.setState({ weatherForecast: res.data });
+    });
   }
 
   render() {
