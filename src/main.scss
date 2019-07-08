@@ -1,4 +1,10 @@
+// VENDORS
 @import "node_modules/normalize-scss/sass/normalize";
+@import "./assets/styles/weather-icons/weather-icons";
+
+// PARTIALS
 @import "./assets/styles/variables";
 @import "./assets/styles/global";
+
+// COMPONENTS
 @import "./assets/styles/app";
