@@ -20,8 +20,17 @@ class App extends Component {
     });
 
     axios.get(this.state.weatherForecastAPI).then(res => {
-      console.log(res);
-      this.setState({ weatherForecast: res.data });
+      const reducedList = res.data.list.slice(0, 7);
+      const forecast = [];
+      reducedList.map((el, i) => {
+        forecast.push({
+          temp: el.main.temp,
+          time: el.dt_txt.split(" ")[1]
+        });
+
+        return 0;
+      });
+      this.setState({ weatherForecast: forecast });
     });
   }
 
