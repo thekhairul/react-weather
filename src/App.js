@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import WeatherCurrent from "./components/weather-current/WeatherCurrent.js";
+import WeatherForecast from "./components/weather-forecast/WeatherForecast.js";
+
 import "./main.scss";
 
 class App extends Component {
@@ -15,7 +17,6 @@ class App extends Component {
 
   componentDidMount() {
     axios.get(this.state.currentWeatherAPI).then(res => {
-      console.log(res);
       this.setState({ currentWeather: res.data });
     });
 
@@ -42,6 +43,23 @@ class App extends Component {
 
     // cache weather data once fetched
     const weather = this.state.currentWeather;
+    const forecast = this.state.weatherForecast;
+
+    let WeatherForecastCMP;
+
+    if (forecast) {
+      WeatherForecastCMP = (
+        <WeatherForecast
+          labels={forecast.map(el => {
+            const hour = el.time.split(":")[0];
+            return hour > 12 ? `${hour - 12} PM` : `${hour} AM`;
+          })}
+          data={forecast.map(el => el.temp)}
+        />
+      );
+    } else {
+      WeatherForecastCMP = <span>Loading...</span>;
+    }
 
     return (
       <div className="App">
@@ -63,6 +81,7 @@ class App extends Component {
               pressure={weather.main.pressure}
               visibility={weather.visibility}
             />
+            {WeatherForecastCMP}
           </div>
         </div>
       </div>

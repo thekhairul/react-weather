@@ -129,6 +129,7 @@
     ]
   },
   "devDependencies": {
+    "@types/chart.js": "^2.7.55",
     "node-sass": "^4.11.0"
   }
 }
