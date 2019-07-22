@@ -3,6 +3,21 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 
 const WeatherForecast = ({ labels, data }) => {
+  const chartOptions = {
+    tooltips: {
+      callbacks: {
+        label: function(tooltipItem, data) {
+          var label = "Temperature";
+
+          if (label) {
+            label += ": ";
+          }
+          label += Math.round(tooltipItem.yLabel * 100) / 100;
+          return label;
+        }
+      }
+    }
+  };
   const chartData = {
     labels: labels,
     datasets: [
@@ -10,8 +25,8 @@ const WeatherForecast = ({ labels, data }) => {
         label: "3 Hourly Forecast",
         fill: false,
         lineTension: 0.1,
-        backgroundColor: "rgba(75,192,192,0.4)",
-        borderColor: "rgba(75,192,192,1)",
+        backgroundColor: "rgba(0,0,0,1)",
+        borderColor: "rgba(255,255,255,1)",
         borderCapStyle: "butt",
         borderDash: [],
         borderDashOffset: 0.0,
@@ -31,7 +46,7 @@ const WeatherForecast = ({ labels, data }) => {
   };
   return (
     <div className="weather-forecast">
-      <Line data={chartData} />
+      <Line data={chartData} options={chartOptions} />
     </div>
   );
 };
