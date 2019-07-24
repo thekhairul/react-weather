@@ -6,7 +6,7 @@
   &__header {
     padding: 20px 0;
     margin-bottom: 20px;
-    border-bottom: 1px solid $color_border;
+    border-bottom: 2px solid #ffffff3d;
   }
 
   &__main {
@@ -23,9 +23,9 @@
         left: 0;
         bottom: 0;
         right: 0;
-        filter: drop-shadow(2px 4px 6px black);
+        filter: drop-shadow(2px 4px 6px #969696);
         z-index: -1;
-        background: #ffffff1a;
+        background: rgba(white, 0.2);
       }
     }
   }
