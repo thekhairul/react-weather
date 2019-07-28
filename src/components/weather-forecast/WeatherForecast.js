@@ -35,7 +35,7 @@ const WeatherForecast = ({ labels, data }) => {
         {
           scaleLabel: {
             display: true,
-            labelString: "Temperature"
+            labelString: "Temperature *C"
           }
         }
       ]

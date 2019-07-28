@@ -27,14 +27,12 @@ const WeatherCurrent = ({
           </span>
         </div>
         <h3 className="condition">{condition}</h3>
-        <img
-          src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
-          alt=""
-          className="icon"
-        />
         <div className="temperature">
-          <span className="value">{temp}</span>
-          <span className="unit">C</span>
+          <i className={`icon wi wi-owm-${icon}`} />
+          <span className="value">
+            {temp}
+            <i className="wi wi-celsius" />
+          </span>
         </div>
       </div>
 
@@ -74,7 +72,7 @@ const WeatherCurrent = ({
 WeatherCurrent.propTypes = {
   location: PropTypes.string.isRequired,
   condition: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.number.isRequired,
   temp: PropTypes.number.isRequired,
   wind: PropTypes.number.isRequired,
   humidity: PropTypes.number.isRequired,

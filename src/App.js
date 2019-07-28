@@ -51,8 +51,14 @@ class App extends Component {
       WeatherForecastCMP = (
         <WeatherForecast
           labels={forecast.map(el => {
-            const hour = el.time.split(":")[0];
-            return hour > 12 ? `${hour - 12} PM` : `${hour} AM`;
+            const hour = +el.time.split(":")[0]; // '+' used to convert str into num
+            if (hour > 12) {
+              return `${hour - 12} PM`;
+            } else if (hour === 12) {
+              return `${hour} PM`;
+            } else {
+              return `${hour} AM`;
+            }
           })}
           data={forecast.map(el => el.temp)}
         />
@@ -74,7 +80,7 @@ class App extends Component {
             <WeatherCurrent
               location={weather.name}
               condition={weather.weather[0].main}
-              icon={weather.weather[0].icon}
+              icon={weather.weather[0].id}
               temp={weather.main.temp}
               wind={weather.wind.speed}
               humidity={weather.main.humidity}
