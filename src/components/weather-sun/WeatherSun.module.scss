@@ -1,0 +1,16 @@
+.weather-sun {
+  padding: 15px;
+  margin-top: 10px;
+  border-top: 1px solid #1211112e;
+
+  :global {
+    .weather-sun__rise,
+    .weather-sun__set {
+      margin-right: 15px;
+
+      time {
+        margin-left: 5px;
+      }
+    }
+  }
+}

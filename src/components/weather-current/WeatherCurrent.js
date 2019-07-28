@@ -10,7 +10,7 @@ import iconVisibility from "../../assets/icon-visibility.svg";
 const WeatherCurrent = ({
   location,
   condition,
-  icon,
+  iconId,
   temp,
   wind,
   humidity,
@@ -28,7 +28,7 @@ const WeatherCurrent = ({
         </div>
         <h3 className="condition">{condition}</h3>
         <div className="temperature">
-          <i className={`icon wi wi-owm-${icon}`} />
+          <i className={`icon wi wi-owm-${iconId}`} />
           <span className="value">
             {temp}
             <i className="wi wi-celsius" />
@@ -72,7 +72,7 @@ const WeatherCurrent = ({
 WeatherCurrent.propTypes = {
   location: PropTypes.string.isRequired,
   condition: PropTypes.string.isRequired,
-  icon: PropTypes.number.isRequired,
+  iconId: PropTypes.number.isRequired,
   temp: PropTypes.number.isRequired,
   wind: PropTypes.number.isRequired,
   humidity: PropTypes.number.isRequired,

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import WeatherCurrent from "./components/weather-current/WeatherCurrent.js";
 import WeatherForecast from "./components/weather-forecast/WeatherForecast.js";
+import WeatherSun from "./components/weather-sun/WeatherSun.js";
 
 import "./main.scss";
 
@@ -80,7 +81,7 @@ class App extends Component {
             <WeatherCurrent
               location={weather.name}
               condition={weather.weather[0].main}
-              icon={weather.weather[0].id}
+              iconId={weather.weather[0].id}
               temp={weather.main.temp}
               wind={weather.wind.speed}
               humidity={weather.main.humidity}
@@ -88,6 +89,10 @@ class App extends Component {
               visibility={weather.visibility}
             />
             {WeatherForecastCMP}
+            <WeatherSun
+              sunrise={weather.sys.sunrise}
+              sunset={weather.sys.sunset}
+            />
           </div>
         </div>
       </div>
