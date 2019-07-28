@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Moment from "react-moment";
 import styles from "./WeatherCurrent.module.scss";
 import iconWind from "../../assets/icon-wind.svg";
@@ -67,6 +68,18 @@ const WeatherCurrent = ({
       </div>
     </div>
   );
+};
+
+// validate props
+WeatherCurrent.propTypes = {
+  location: PropTypes.string.isRequired,
+  condition: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+  temp: PropTypes.number.isRequired,
+  wind: PropTypes.number.isRequired,
+  humidity: PropTypes.number.isRequired,
+  pressure: PropTypes.number.isRequired,
+  visibility: PropTypes.number.isRequired
 };
 
 export default WeatherCurrent;
