@@ -15,7 +15,8 @@ const WeatherCurrent = ({
   wind,
   humidity,
   pressure,
-  visibility
+  visibility,
+  tempUnit
 }) => {
   return (
     <div className={styles["weather-current"]}>
@@ -30,8 +31,12 @@ const WeatherCurrent = ({
         <div className="temperature">
           <i className={`icon wi wi-owm-${iconId}`} />
           <span className="value">
-            {temp}
-            <i className="wi wi-celsius" />
+            {tempUnit === "C" ? temp : (temp * 9) / 5 + 32}
+            {tempUnit === "C" ? (
+              <i className="wi wi-celsius" />
+            ) : (
+              <i className="wi wi-fahrenheit" />
+            )}
           </span>
         </div>
       </div>

@@ -7,7 +7,12 @@ import styles from "./WeatherForecast.module.scss";
 // chart js default font color
 defaults.global.defaultFontColor = "black";
 
-const WeatherForecast = ({ labels, data }) => {
+const WeatherForecast = ({ labels, data, tempUnit }) => {
+  // convert temp data into fahrenheit if neccessary
+  if (tempUnit === "F") {
+    data = data.map(el => (el * 9) / 5 + 32);
+  }
+  // chart options
   const chartOptions = {
     tooltips: {
       callbacks: {
@@ -18,7 +23,7 @@ const WeatherForecast = ({ labels, data }) => {
             label += ": ";
           }
           label += Math.round(tooltipItem.yLabel);
-          return label + "*C";
+          return label + "*" + tempUnit;
         }
       }
     },
@@ -35,7 +40,7 @@ const WeatherForecast = ({ labels, data }) => {
         {
           scaleLabel: {
             display: true,
-            labelString: "Temperature *C"
+            labelString: "Temperature *" + tempUnit
           }
         }
       ]

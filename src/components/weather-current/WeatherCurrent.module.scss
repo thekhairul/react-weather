@@ -31,6 +31,9 @@
       }
       .value {
         font-size: 30px;
+        @include breakpoint(max-width 480px) {
+          font-size: 18px;
+        }
       }
       .unit {
         position: relative;

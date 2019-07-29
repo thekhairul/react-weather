@@ -14,11 +14,14 @@ class App extends Component {
     weatherForecastAPI:
       "https://api.openweathermap.org/data/2.5/forecast?id=1185241&APPID=a6b32c215b9e2bed2fe00783d7057ada&units=metric",
     currentWeather: null,
-    weatherForecast: null
+    weatherForecast: null,
+    tempUnit: "C"
   };
 
-  toggleTempUnit() {
-    console.log("hi");
+  handleCelsius2Fahrenheit() {
+    this.setState(state => ({
+      tempUnit: state.tempUnit === "C" ? "F" : "C"
+    }));
   }
 
   componentDidMount() {
@@ -67,6 +70,7 @@ class App extends Component {
             }
           })}
           data={forecast.map(el => el.temp)}
+          tempUnit={this.state.tempUnit}
         />
       );
     } else {
@@ -92,6 +96,7 @@ class App extends Component {
               humidity={weather.main.humidity}
               pressure={weather.main.pressure}
               visibility={weather.visibility}
+              tempUnit={this.state.tempUnit}
             />
             {WeatherForecastCMP}
             <div className="App__main__footer">
@@ -99,7 +104,11 @@ class App extends Component {
                 sunrise={weather.sys.sunrise}
                 sunset={weather.sys.sunset}
               />
-              <Switch switchFn={this.toggleTempUnit.bind(this)} />
+              <div className="temp-unit-toggle">
+                <i className="wi wi-celsius" />
+                <Switch switchFn={this.handleCelsius2Fahrenheit.bind(this)} />
+                <i className="wi wi-fahrenheit" />
+              </div>
             </div>
           </div>
         </div>
