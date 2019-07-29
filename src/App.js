@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Switch from "./components/switch/Switch.js";
 import WeatherCurrent from "./components/weather-current/WeatherCurrent.js";
 import WeatherForecast from "./components/weather-forecast/WeatherForecast.js";
 import WeatherSun from "./components/weather-sun/WeatherSun.js";
@@ -15,6 +16,10 @@ class App extends Component {
     currentWeather: null,
     weatherForecast: null
   };
+
+  toggleTempUnit() {
+    console.log("hi");
+  }
 
   componentDidMount() {
     axios.get(this.state.currentWeatherAPI).then(res => {
@@ -89,10 +94,13 @@ class App extends Component {
               visibility={weather.visibility}
             />
             {WeatherForecastCMP}
-            <WeatherSun
-              sunrise={weather.sys.sunrise}
-              sunset={weather.sys.sunset}
-            />
+            <div className="App__main__footer">
+              <WeatherSun
+                sunrise={weather.sys.sunrise}
+                sunset={weather.sys.sunset}
+              />
+              <Switch switchFn={this.toggleTempUnit.bind(this)} />
+            </div>
           </div>
         </div>
       </div>

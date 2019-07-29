@@ -36,5 +36,14 @@
         margin: -20px;
       }
     }
+
+    &__footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      margin-top: 10px;
+      border-top: 1px solid #1211112e;
+    }
   }
 }
