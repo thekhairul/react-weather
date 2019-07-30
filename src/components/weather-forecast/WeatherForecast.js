@@ -38,6 +38,9 @@ const WeatherForecast = ({ labels, data, tempUnit }) => {
       ],
       yAxes: [
         {
+          ticks: {
+            stepSize: 1
+          },
           scaleLabel: {
             display: true,
             labelString: "Temperature *" + tempUnit
