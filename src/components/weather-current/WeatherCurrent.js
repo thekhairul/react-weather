@@ -64,7 +64,7 @@ const WeatherCurrent = ({
           <li>
             <img src={iconVisibility} alt="" />
             <span>
-              <b>Visibility:</b> {visibility / 1000} km
+              <b>Visibility:</b> {visibility ? visibility/1000: '--'} km
             </span>
           </li>
         </ul>

@@ -1,21 +1,27 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Switch from "./components/switch/Switch.js";
-import WeatherCurrent from "./components/weather-current/WeatherCurrent.js";
-import WeatherForecast from "./components/weather-forecast/WeatherForecast.js";
-import WeatherSun from "./components/weather-sun/WeatherSun.js";
+import Switch from "./components/switch/Switch";
+import Toast from "./components/toast/Toast";
+import WeatherSearch from "./components/weather-search/WeatherSearch";
+import WeatherCurrent from "./components/weather-current/WeatherCurrent";
+import WeatherForecast from "./components/weather-forecast/WeatherForecast";
+import WeatherSun from "./components/weather-sun/WeatherSun";
 
 import "./main.scss";
 
 class App extends Component {
   state = {
     currentWeatherAPI:
-      "https://api.openweathermap.org/data/2.5/weather?id=1185241&APPID=a6b32c215b9e2bed2fe00783d7057ada&units=metric",
+      "https://api.openweathermap.org/data/2.5/weather?q=Dhaka&APPID=a6b32c215b9e2bed2fe00783d7057ada&units=metric",
     weatherForecastAPI:
-      "https://api.openweathermap.org/data/2.5/forecast?id=1185241&APPID=a6b32c215b9e2bed2fe00783d7057ada&units=metric",
+      "https://api.openweathermap.org/data/2.5/forecast?q=Dhaka&APPID=a6b32c215b9e2bed2fe00783d7057ada&units=metric",
     currentWeather: null,
     weatherForecast: null,
-    tempUnit: "C"
+    tempUnit: "C",
+    toastProps: {
+      visible: false,
+      type: "success"
+    }
   };
 
   handleCelsius2Fahrenheit() {
@@ -24,11 +30,28 @@ class App extends Component {
     }));
   }
 
-  componentDidMount() {
-    axios.get(this.state.currentWeatherAPI).then(res => {
-      this.setState({ currentWeather: res.data });
+  showToast(type) {
+    this.setState({ toastProps: { visible: true, type: "error" } }, () => {
+      setTimeout(
+        () =>
+          this.setState({ toastProps: { visible: false, type: "success" } }),
+        3000
+      );
     });
+  }
 
+  fetchWeather() {
+    // fetch current weather
+    axios
+      .get(this.state.currentWeatherAPI)
+      .then(res => {
+        this.setState({ currentWeather: res.data });
+      })
+      .catch(err => {
+        this.showToast("error");
+      });
+
+    // fetch upcoming weather forecast
     axios.get(this.state.weatherForecastAPI).then(res => {
       const reducedList = res.data.list.slice(0, 7);
       const forecast = [];
@@ -42,6 +65,17 @@ class App extends Component {
       });
       this.setState({ weatherForecast: forecast });
     });
+  }
+
+  async handleWeatherSearch(cityName) {
+    const currentWeatherAPI = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=a6b32c215b9e2bed2fe00783d7057ada&units=metric`;
+    const weatherForecastAPI = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&APPID=a6b32c215b9e2bed2fe00783d7057ada&units=metric`;
+    await this.setState({ currentWeatherAPI, weatherForecastAPI });
+    this.fetchWeather();
+  }
+
+  componentDidMount() {
+    this.fetchWeather();
   }
 
   render() {
@@ -79,9 +113,12 @@ class App extends Component {
 
     return (
       <div className="App">
+        <Toast toastProps={this.state.toastProps} />
         <div className="App__header">
           <div className="App__header__container container">
-            this is app header
+            <WeatherSearch
+              handleWeatherSearch={this.handleWeatherSearch.bind(this)}
+            />
           </div>
         </div>
 
@@ -95,7 +132,7 @@ class App extends Component {
               wind={weather.wind.speed}
               humidity={weather.main.humidity}
               pressure={weather.main.pressure}
-              visibility={weather.visibility}
+              visibility={weather.visibility || 0}
               tempUnit={this.state.tempUnit}
             />
             {WeatherForecastCMP}

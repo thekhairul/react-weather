@@ -1,0 +1,29 @@
+.weather-search {
+  :global {
+    .weather-search__form {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+
+      input {
+        background: transparent;
+        color: black;
+        border: none;
+        padding: 10px;
+        flex-grow: 1;
+      }
+    }
+
+    .weather-search__submit {
+      flex-grow: 1;
+      background: white;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      padding: 10px 20px;
+      max-width: 150px;
+      cursor: pointer;
+    }
+  }
+}
