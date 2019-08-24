@@ -125,7 +125,8 @@ class App extends Component {
         <div className="App__main">
           <div className="App__main__container container">
             <WeatherCurrent
-              location={weather.name}
+              city={weather.name}
+              country={weather.sys.country}
               condition={weather.weather[0].main}
               iconId={weather.weather[0].id}
               temp={weather.main.temp}

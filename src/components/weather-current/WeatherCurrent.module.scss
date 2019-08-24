@@ -14,9 +14,7 @@
 
       .meta {
         span {
-          @include breakpoint(max-width 480px) {
-            display: block;
-          }
+          display: block;
         }
       }
 

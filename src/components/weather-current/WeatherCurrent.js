@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Countries from "./../../data/countriesISO3166.json";
 import Moment from "react-moment";
 import styles from "./WeatherCurrent.module.scss";
 import iconWind from "../../assets/icon-wind.svg";
@@ -8,7 +9,8 @@ import iconPressure from "../../assets/icon-pressure.svg";
 import iconVisibility from "../../assets/icon-visibility.svg";
 
 const WeatherCurrent = ({
-  location,
+  city,
+  country,
   condition,
   iconId,
   temp,
@@ -22,7 +24,9 @@ const WeatherCurrent = ({
     <div className={styles["weather-current"]}>
       <div className="weather-current__featured">
         <div className="meta">
-          <span className="location">{location}, </span>
+          <span className="location">
+            {city}, {Countries[country]},
+          </span>
           <span className="date">
             <Moment format="Do MMM YYYY">{new Date()}</Moment>
           </span>
@@ -64,7 +68,7 @@ const WeatherCurrent = ({
           <li>
             <img src={iconVisibility} alt="" />
             <span>
-              <b>Visibility:</b> {visibility ? visibility/1000: '--'} km
+              <b>Visibility:</b> {visibility ? visibility / 1000 : "--"} km
             </span>
           </li>
         </ul>
@@ -75,7 +79,8 @@ const WeatherCurrent = ({
 
 // validate props
 WeatherCurrent.propTypes = {
-  location: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  country: PropTypes.string.isRequired,
   condition: PropTypes.string.isRequired,
   iconId: PropTypes.number.isRequired,
   temp: PropTypes.number.isRequired,
