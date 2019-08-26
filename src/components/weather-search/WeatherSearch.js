@@ -4,7 +4,6 @@ import styles from "./WeatherSearch.module.scss";
 const WeatherSearch = ({ handleWeatherSearch }) => {
   const handleWeatherSearchSubmit = e => {
     e.preventDefault();
-    e.persist(); // without this react doesn't keep native DOMevent around
     handleWeatherSearch(e.target.elements["weatherQuery"].value);
   };
 
