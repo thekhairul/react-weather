@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Countries from "./../../data/countriesISO3166.json";
+import Countries from "./../../assets/data/countriesISO3166.json";
 import Moment from "react-moment";
 import styles from "./WeatherCurrent.module.scss";
 import iconWind from "../../assets/icon-wind.svg";
