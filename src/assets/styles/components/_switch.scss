@@ -1,0 +1,32 @@
+.switch {
+  display: inline-block;
+  width: 30px;
+  height: 10px;
+  margin: 0 8px;
+  background: rgba(#4066e2, 0.7);
+  border-radius: 15px;
+  cursor: pointer;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    bottom: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: white;
+    transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translateY(-50%);
+  }
+
+  &.active {
+    background: rgba(#4066e2, 1);
+
+    &::before {
+      transform: translateY(-50%) translateX(100%);
+    }
+  }
+}

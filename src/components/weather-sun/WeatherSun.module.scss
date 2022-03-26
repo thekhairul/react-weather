@@ -1,0 +1,14 @@
+.weather-sun {
+  display: flex;
+  flex-wrap: wrap;
+  :global {
+    .weather-sun__rise,
+    .weather-sun__set {
+      margin-right: 15px;
+
+      time {
+        margin-left: 5px;
+      }
+    }
+  }
+}
